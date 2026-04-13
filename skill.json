@@ -1,0 +1,9 @@
+{
+  "entries": {
+    "hlbrecord": {
+      "enabled": true,
+      "thinkingLevel": "off",
+      "reasoningDefault": "off"
+    }
+  }
+}

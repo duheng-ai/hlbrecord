@@ -1,0 +1,21 @@
+{
+  "name": "hlbrecord",
+  "version": "1.0.0",
+  "description": "批量火脸主扫报备技能（401 自动刷新 token）",
+  "main": "index.js",
+  "scripts": {
+    "test": "node run.js"
+  },
+  "keywords": [
+    "openclaw",
+    "skill",
+    "hlbrecord",
+    "lianok",
+    "batch"
+  ],
+  "author": "duheng",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0"
+  }
+}
