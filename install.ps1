@@ -1,9 +1,5 @@
 <#
   hlbrecord Installer - 批量火脸主扫报备技能
-  1. 动态检测磁盘，无盘符报错
-  2. 超强 OpenClaw 查找
-  3. 无乱码 | 兼容 PowerShell 5.1
-  4. 全容错，无空路径报错
 #>
 
 # 修复编码 + 网络 TLS1.2
@@ -16,16 +12,16 @@ Write-Host "=== hlbrecord Auto Installer ===" -ForegroundColor Cyan
 Write-Host ""
 
 # ==============================================
-# 查找 OpenClaw（动态磁盘）
+# 查找 OpenClaw
 # ==============================================
 function Find-OpenClaw {
     $searchPaths = @()
 
-    # 1. 标准默认路径（99% 用户的安装位置）
+    # 1. 标准默认路径
     $defaultPath = Join-Path $env:USERPROFILE ".openclaw"
     $searchPaths += $defaultPath
 
-    # 2. 动态获取系统所有可用磁盘，仅检测存在的盘
+    # 2. 获取系统所有可用磁盘
     $drives = [System.IO.DriveInfo]::GetDrives() | Where-Object { $_.DriveType -eq 'Fixed' -and $_.IsReady }
     foreach ($drive in $drives) {
         $driveRoot = $drive.RootDirectory.FullName
@@ -41,7 +37,7 @@ function Find-OpenClaw {
         $searchPaths += $env:OPENCLAW_PATH
     }
 
-    # 遍历校验，仅返回有效路径
+    # 遍历校验
     foreach ($path in $searchPaths) {
         if (-not $path) { continue }
         $skillPath = Join-Path $path "skills"
